@@ -1,22 +1,26 @@
 const args = process.argv;
 
-const inValue = parseInt(args[args.length - 1], 10);
-let val = inValue;
+function main() {
+  const inValue = parseInt(args[args.length - 1], 10);
+  let val = inValue;
 
-const alphabet = 'ZABCDEFGHIJKLMNOPQRSTUVWXY';
+  const alphabet = 'ZABCDEFGHIJKLMNOPQRSTUVWXY';
 
-let outValue = '';
+  let outValue = '';
 
 
-while (val >= 26) {
-  const rest = val % 26;
-  outValue = alphabet[rest] + outValue;
-  val = Math.floor((val - 1) / 26);
+  while (val >= 26) {
+    const rest = val % 26;
+    outValue = alphabet[rest] + outValue;
+    val = Math.floor((val - 1) / 26);
+  }
+
+  if (val > 0) {
+    outValue = alphabet[val] + outValue;
+  }
+
+  return outValue;
 }
 
-if (val > 0) {
-  outValue = alphabet[val] + outValue;
-}
-
-console.log(outValue);
+console.log(main());
 
